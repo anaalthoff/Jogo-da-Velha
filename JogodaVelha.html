@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href='https://icons.iconarchive.com/icons/iconhive/black-twitter/256/bird-2-icon.png'
+        type="image/x-icon">>
+    <meta charset="UTF-8">
+    <title>Botão</title>
+    <style>
+        body {
+            background-image: url(image.jpg);
+            background-position: center;
+        }
+
+        button {
+            background-color: rgb(192, 189, 189);
+            height: 150px;
+            width: 150px;
+            box-shadow: cornsilk;
+            border-radius: 30px;
+            margin: 4px;
+            font-size: 40px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .comandos {
+            width: 150px;
+            background-color: rgb(95, 95, 158);
+
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 150px 150px 150px;
+            grid-template-rows: 150px 150px 150px;
+            grid-auto-rows: 1fr;
+            gap: 1px 1px;
+            grid-auto-flow: row;
+            grid-template-areas:
+                "  "
+                "  "
+                "  ";
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        div button {
+            font-size: xx-large;
+        }
+
+        #divResultado {
+            font-size: 50px;
+            text-align: center;
+            color: rgb(192, 189, 189);
+        }
+
+        #btnNomes {
+            background-color: rgb(95, 95, 158);
+            height: 50px;
+            width: 200px;
+            border-radius: 10%;
+            font-size: large;
+        }
+
+        #divNomes {
+            text-align: center;
+            color: cornsilk;
+            font-size: large;
+        }
+    </style>
+    <audio controls>
+        <source src="y2meta.com - Debussy - Clair de Lune (128 kbps).mp3" type="audio/mpeg">
+    </audio>
+</head>
+
+<body>
+
+    <div id="divNomes">
+        Nome do Jogador X <input type="text" name="" id="inpX"><br>
+        Nome do Jogador O <input type="text" name="" id="inpO"><br>
+        <br><button id="btnNomes" onclick="iniciarPartida()">Iniciar Partida</button><br>
+    </div>
+
+    <div class="container">
+        <div><button id="btnTeste1" onclick="tratarbotao(1)"></button></div>
+        <div><button id="btnTeste2" onclick="tratarbotao(2)"></button></div>
+        <div><button id="btnTeste3" onclick="tratarbotao(3)"></button></div>
+        <div><button id="btnTeste4" onclick="tratarbotao(4)"></button></div>
+        <div><button id="btnTeste5" onclick="tratarbotao(5)"></button></div>
+        <div><button id="btnTeste6" onclick="tratarbotao(6)"></button></div>
+        <div><button id="btnTeste7" onclick="tratarbotao(7)"></button></div>
+        <div><button id="btnTeste8" onclick="tratarbotao(8)"></button></div>
+        <div><button id="btnTeste9" onclick="tratarbotao(9)"></button></div>
+    </div><br>
+    <button onclick="reset()" class="comandos">Reset</button>
+
+    <div id="divResultado"></div>
+
+    <script>
+
+        var nomeX, nomeO
+        var proximaJogada = 'X'
+        var contJogadas = 0
+        var vencedor = 'Ninguém'
+        var XN = 0
+        var ON = 0
+        var emp = 0
+
+        function iniciarPartida() {
+            nomeX = document.getElementById('inpX').value
+            nomeO = document.getElementById('inpO').value
+            document.getElementById('divNomes').innerHTML = ''
+        }
+
+        function pintarVencedor(v1, v2, v3) {
+            cor = 'rgb(95, 95, 158)'
+            document.getElementById(v1).style.background = cor
+            document.getElementById(v2).style.background = cor
+            document.getElementById(v3).style.background = cor
+        }
+
+        function tratarbotao(botao) {
+            var identificador = 'btnTeste' + botao
+            if (document.getElementById(identificador).innerText == '' && vencedor == 'Ninguém') {
+                contJogadas++
+                document.getElementById(identificador).innerText = proximaJogada
+
+                if (proximaJogada == 'X') {
+                    proximaJogada = 'O'
+                } else {
+                    proximaJogada = 'X'
+                }
+                verificarVencedor()
+                verificarEmpate()
+            }
+
+        }
+
+        function verificarVencedor() {
+            var b1 = document.getElementById('btnTeste1').innerText
+            var b2 = document.getElementById('btnTeste2').innerText
+            var b3 = document.getElementById('btnTeste3').innerText
+            var b4 = document.getElementById('btnTeste4').innerText
+            var b5 = document.getElementById('btnTeste5').innerText
+            var b6 = document.getElementById('btnTeste6').innerText
+            var b7 = document.getElementById('btnTeste7').innerText
+            var b8 = document.getElementById('btnTeste8').innerText
+            var b9 = document.getElementById('btnTeste9').innerText
+            if (b1 == b2 & b2 == b3 & b1 != '') {
+                //alert(b1 + " Ganhou!")
+                document.getElementById('divResultado').innerHTML = b1 + ' Ganhou!'
+                pintarVencedor('btnTeste1', 'btnTeste2', 'btnTeste3')
+                vencedor = b1
+                if (b1 == 'X') {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeX
+                } else {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeO
+                }
+            }
+            if (b4 == b5 & b5 == b6 & b4 != '') {
+                // alert(b4 + " Ganhou!")
+                document.getElementById('divResultado').innerHTML = b4 + ' Ganhou!'
+                pintarVencedor('btnTeste4', 'btnTeste5', 'btnTeste6')
+                vencedor = b4
+                if (b4 == 'X') {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeX
+                } else {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeO
+                }
+            }
+            if (b7 == b8 & b8 == b9 & b7 != '') {
+                // alert(b7 + " Ganhou!")
+                document.getElementById('divResultado').innerHTML = b7 + ' Ganhou!'
+                pintarVencedor('btnTeste7', 'btnTeste8', 'btnTeste9')
+                vencedor = b7
+                if (b7 == 'X') {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeX
+                } else {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeO
+                }
+            }
+            if (b1 == b4 & b4 == b7 & b1 != '') {
+                // alert(b1 + " Ganhou!")
+                document.getElementById('divResultado').innerHTML = b1 + ' Ganhou!'
+                pintarVencedor('btnTeste1', 'btnTeste4', 'btnTeste7')
+                vencedor = b1
+                if (b1 == 'X') {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeX
+                } else {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeO
+                }
+            }
+            if (b2 == b5 & b5 == b8 & b2 != '') {
+                // alert(b2 + " Ganhou!")
+                document.getElementById('divResultado').innerHTML = b2 + ' Ganhou!'
+                pintarVencedor('btnTeste2', 'btnTeste5', 'btnTeste8')
+                vencedor = b2
+                if (b2 == 'X') {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeX
+                } else {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeO
+                }
+            }
+            if (b3 == b6 & b6 == b9 & b3 != '') {
+                // alert(b3 + " Ganhou!")
+                document.getElementById('divResultado').innerHTML = b3 + ' Ganhou!'
+                pintarVencedor('btnTeste3', 'btnTeste6', 'btnTeste9')
+                vencedor = b3
+                if (b3 == 'X') {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeX
+                } else {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeO
+                }
+            }
+            if (b1 == b5 & b5 == b9 & b1 != '') {
+                // alert(b1 + " Ganhou!")
+                document.getElementById('divResultado').innerHTML = b1 + ' Ganhou!'
+                pintarVencedor('btnTeste1', 'btnTeste5', 'btnTeste9')
+                vencedor = b1
+                if (b1 == 'X') {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeX
+                } else {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeO
+                }
+            }
+            if (b3 == b5 & b5 == b7 & b3 != '') {
+                // alert(b3 + " Ganhou!")
+                document.getElementById('divResultado').innerHTML = b3 + ' Ganhou!'
+                pintarVencedor('btnTeste3', 'btnTeste5', 'btnTeste7')
+                vencedor = b3
+                if (b3 == 'X') {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeX
+                } else {
+                    document.getElementById('divResultado').innerHTML = '<br>Parabéns, ' + nomeO
+                }
+            }
+
+        }
+        function verificarEmpate() {
+            if (contJogadas == 9 && vencedor == 'Ninguém') {
+                document.getElementById('divResultado').innerHTML = 'Empate'
+            }
+        }
+
+        // function placar(){
+
+        //     {
+        //         if (proximaJogada == "X"){XN ++}
+        //         else{ON ++}
+        //         document.getElementById('outid').innerHTML = "<br>Jogador X - " + XN + "<br>Jogador O - " + ON
+        //         document.getElementById('outid2').innerHTML = "Vitória do jogador " +proximaJogada+ "!"
+        //     } }
+
+        function reset() {
+            document.getElementById('btnTeste1').innerText = ''
+            document.getElementById('btnTeste2').innerText = ''
+            document.getElementById('btnTeste3').innerText = ''
+            document.getElementById('btnTeste4').innerText = ''
+            document.getElementById('btnTeste5').innerText = ''
+            document.getElementById('btnTeste6').innerText = ''
+            document.getElementById('btnTeste7').innerText = ''
+            document.getElementById('btnTeste8').innerText = ''
+            document.getElementById('btnTeste9').innerText = ''
+            document.getElementById('divResultado').innerHTML = ''
+            var cor = 'rgb(192, 189, 189)'
+            document.getElementById('btnTeste1').style.backgroundColor = cor
+            document.getElementById('btnTeste2').style.backgroundColor = cor
+            document.getElementById('btnTeste3').style.backgroundColor = cor
+            document.getElementById('btnTeste4').style.backgroundColor = cor
+            document.getElementById('btnTeste5').style.backgroundColor = cor
+            document.getElementById('btnTeste6').style.backgroundColor = cor
+            document.getElementById('btnTeste7').style.backgroundColor = cor
+            document.getElementById('btnTeste8').style.backgroundColor = cor
+            document.getElementById('btnTeste9').style.backgroundColor = cor
+            contJogadas = 0
+            vencedor = 'Ninguém'
+        }
+
+    </script>
+</body>
+
+</html>

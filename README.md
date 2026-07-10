@@ -1,8 +1,8 @@
-# 🎮 Jogo da Velha (Tic Tac Toe)
+# Jogo da Velha (Tic Tac Toe)
 
 Um projeto simples em HTML, CSS e JavaScript desenvolvido há alguns anos, que implementa o clássico Jogo da Velha para dois jogadores, com interface gráfica e exibição de vencedores.
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 - Entrada de nomes para Jogador X e Jogador O
 - Alternância automática entre turnos (X e O)
@@ -13,19 +13,11 @@ Um projeto simples em HTML, CSS e JavaScript desenvolvido há alguns anos, que i
 
 🎵 Música de fundo (Clair de Lune, Debussy) para tornar a experiência mais agradável
 
-## 🖼️ Interface
+## Interface
 
 - O tabuleiro é construído com grid layout (3x3).
 - Cada célula é representada por um botão clicável.
 - O resultado da partida é exibido logo abaixo do tabuleiro.
-
-## 📂 Estrutura do Projeto
-jogo-da-velha/
-```
-│── jogoDaVelha.html   # Arquivo principal com HTML, CSS e JS embutidos
-│── image.jpg          # Imagem de fundo (não inclusa aqui, mas referenciada no projeto)
-│── y2meta.com - Debussy - Clair de Lune.mp3  # Música de fundo
-```
 
 ## Como Executar
 
@@ -42,7 +34,7 @@ jogo-da-velha/
 4. Assim que houver um vencedor ou empate, a mensagem será exibida.
 5. Clique em Reset para começar novamente.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - HTML5
 - CSS3 (Grid Layout, estilização de botões e interface)

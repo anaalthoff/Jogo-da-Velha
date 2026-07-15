@@ -39,8 +39,3 @@ Um projeto simples em HTML, CSS e JavaScript desenvolvido há alguns anos, que i
 - HTML5
 - CSS3 (Grid Layout, estilização de botões e interface)
 - JavaScript (lógica do jogo, verificação de vencedor/empate, manipulação do DOM)
-
-## 📜 Licença
-
-Este projeto foi feito com propósito de aprendizado e prática.
-Sinta-se à vontade para reutilizar e modificar como quiser. 🚀
